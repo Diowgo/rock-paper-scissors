@@ -21,6 +21,8 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice ?? ''
+    
     humanChoice = humanChoice.toLowerCase();
     humanChoice = humanChoice.trim();
 
@@ -55,4 +57,7 @@ function playGame() {
     console.log(humanScore > computerScore ? 'Human wins!' : humanScore == computerScore ? 'Draw!' : 'Computer wins!');
 }
 
-playGame();
+const button = document.querySelectorAll("button")[0];
+button.addEventListener("click", () => {
+    playGame();
+});
