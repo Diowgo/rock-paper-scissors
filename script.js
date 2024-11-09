@@ -35,12 +35,12 @@ function playRound(humanChoice, computerChoice) {
 
     if (choiceBeats[humanChoice] == computerChoice) {
         humanScore += 1;
-        console.log(`${humanChoice} beats ${computerChoice}!`)
+        displayMessageInDOM(`${humanChoice} beats ${computerChoice}!`)
     } else if (humanChoice == computerChoice) {
-        console.log(`Draw! Both got ${humanChoice}`);
+        displayMessageInDOM(`Draw! Both got ${humanChoice}`);
     } else if (choiceBeats[computerChoice] == humanChoice){
         computerScore += 1;
-        console.log(`${computerChoice} beats ${humanChoice}!`)
+        displayMessageInDOM(`${computerChoice} beats ${humanChoice}!`)
     } else {
         playRound(getHumanChoice(), computerChoice)
     }
@@ -49,11 +49,16 @@ function playRound(humanChoice, computerChoice) {
     
 }
 
+function displayMessageInDOM(msg) {
+    const para = messageDOM.querySelector("p");
+    para.textContent = msg;
+}
 function endGame() {
     hasGameStarted = false;
-    console.log(humanScore > computerScore ? 'Human wins!' : humanScore == computerScore ? 'Draw!' : 'Computer wins!');
+    const winner = humanScore > computerScore ? 'Human' : humanScore == computerScore ? '' : 'Computer';
     humanScore = 0;
     computerScore = 0;
+    displayMessageInDOM(winner)
     updateStartButton();
     updateScoreInDOM();
 }
@@ -126,3 +131,4 @@ window.addEventListener("click", (event) => {
 const startButton = document.querySelector("button#startGame");
 const computerScoreDOM = document.querySelector("#computer-score");
 const humanScoreDOM = document.querySelector("#human-score");
+const messageDOM = document.querySelector("div.message");
