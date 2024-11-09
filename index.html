@@ -5,8 +5,25 @@
         <title>Rock paper scissors</title>
         <meta charset="UTF-8">
         <script type="module" src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div class="container">
+            <div class="computer">
+                <img src="">
+                <div class="text-container">
+                    <p>Computer score: <span id="computer-score">0</span></p>
+                </div>
+            </div>
+            <div class="human">
+                <img class="person">
+                <img class="hand">
+                <div class="text-container">
+                    <p>Human score: <span id="human-score">0</span></p>
+                </div>
+            </div>
+        </div>
+
         <button id="startGame">Start Game</button>
         <button id="rock">rock</button>
         <button id="paper">paper</button>

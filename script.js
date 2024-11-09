@@ -21,6 +21,11 @@ function getHumanChoice() {
     return ans;
 }
 
+function updateScoreInDOM() {
+    humanScoreDOM.textContent = humanScore;
+    computerScoreDOM.textContent = computerScore;
+}
+
 function playRound(humanChoice, computerChoice) {
     const choiceBeats = {
         rock: "scissors",
@@ -39,6 +44,8 @@ function playRound(humanChoice, computerChoice) {
     } else {
         playRound(getHumanChoice(), computerChoice)
     }
+
+    updateScoreInDOM();
     
 }
 
@@ -48,6 +55,7 @@ function endGame() {
     humanScore = 0;
     computerScore = 0;
     updateStartButton();
+    updateScoreInDOM();
 }
 
 function shouldGameEnd() {
@@ -116,3 +124,5 @@ window.addEventListener("click", (event) => {
 
 
 const startButton = document.querySelector("button#startGame");
+const computerScoreDOM = document.querySelector("#computer-score");
+const humanScoreDOM = document.querySelector("#human-score");
